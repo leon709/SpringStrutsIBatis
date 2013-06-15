@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+	<constant name="struts.i18n.encoding" value="utf-8"></constant>
+	<constant name="struts.custom.i18n.resources" value="messageResource"></constant>
+	
+	<include file="struts-default.xml"></include>
+	<include file="/struts2/json-test.xml"/>
+	<!-- 
+	<include file="/struts2/action-user.xml"/>
+	<include file="/struts2/action-chart.xml"/>
+	 -->
+	
+	
+	<package name="ssi" extends="struts-default">
+		<action name="login" method="doLogin" class="LoginAction">
+			<result name="success">/index.jsp</result>
+			<result name="input">/jsp/login.jsp</result>
+		</action>
+		<action name="searchUser" method="searchUser" class="LoginAction">
+			<result name="success">/WEB-INF/jsp/userManagement.jsp</result>
+		</action>
+		
+		<action name="toStudentManagement" method="toStudentManagement" class="StudentAction">
+			<result name="success">/WEB-INF/jsp/studentManagement.jsp</result>
+		</action>
+		<action name="ajaxGetStudentCourseDetail" method="ajaxGetStudentCourseDetail" class="StudentAction" >
+        </action>
+        
+		<action name="welcome" method="welcome" class="LoginAction">
+			<result name="success">/WEB-INF/jsp/welcome.jsp</result>
+		</action>
+	</package>
+
+</struts>

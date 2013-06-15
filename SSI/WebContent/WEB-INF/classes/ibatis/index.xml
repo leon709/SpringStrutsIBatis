@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+	
+<mapper namespace="leon.ssi.dao.StudentDAO">
+    <select id="getAllStudent" resultType="leon.ssi.model.Student">
+        <![CDATA[
+        SELECT 
+	        sid studentId, 
+	        sname studentName,
+	        age age,
+	        gender gender
+        from student
+        where 1=1
+        ]]>
+        <if test="studentId !=null">
+        	and sid=#{studentId,jdbcType=VARCHAR}
+        </if>
+        <choose>
+	        <when test="enableFuzzy =='true' ">
+	        	<if test="studentName !=null">
+	        		and sname like #{studentNameLike,jdbcType=VARCHAR}
+	        	</if>
+	        </when>
+	        <otherwise>
+	        	<if test="studentName !=null">
+	        		and sname=#{studentName,jdbcType=VARCHAR}
+	        	</if>
+	        </otherwise>
+        </choose>
+    </select>
+
+    <update id="addStudent" parameterType="java.util.Map">
+        insert into t_student(student_id, student_name)values(seq_student_no.nextval,#{stdName})
+    </update>
+
+    <update id="delStudent" parameterType="java.util.Map">
+        delete from t_student where student_id=#{stdNo}
+    </update>
+    
+    <select id="getStudentCourseDetail" parameterType="java.util.Map" resultType="leon.ssi.model.StudentCourseDetailBean">
+		SELECT
+			s.sid AS "studentId",
+			s.sname AS "studentName",
+			sc.cid AS "courseId",
+			c.cname AS "courseName",
+			sc.score AS "score",
+			t.tname AS "teacherName"
+		FROM student s
+			INNER JOIN student_course sc ON s.sid=sc.sid
+			INNER JOIN course c ON c.cid=sc.cid
+			INNER JOIN teacher t ON c.tid=t.tid
+		WHERE s.sid=#{studentId,jdbcType=VARCHAR}
+    </select>
+</mapper>

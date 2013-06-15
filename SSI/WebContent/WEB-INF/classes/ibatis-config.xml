@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//ibatis.apache.org//DTD Config 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-config.dtd">
+<configuration>
+
+	<typeAliases>
+   		<typeAlias alias="int" type="java.lang.Integer"/>
+   		<typeAlias alias="map" type="java.util.Map"/>
+   		
+   		<typeAlias alias="User" type="leon.ssi.model.User"/>
+   		<typeAlias alias="Role" type="leon.ssi.model.Role"/>
+   	</typeAliases>
+   	
+	<mappers>
+		<mapper resource="ibatis/index.xml" />
+		<mapper resource="ibatis/login.xml" />
+	</mappers>
+</configuration>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="leon.ssi.dao.LoginDAO">
+	<select id="validLogin" resultType="int" parameterType="java.util.Map">
+        <![CDATA[
+        SELECT count(1) from t_user 
+        where username= #{loginId,jdbcType=VARCHAR} 
+        and password=#{loginPwd,jdbcType=VARCHAR}
+        ]]>
+	</select>
+	<select id="getUserListByParam" resultType="leon.ssi.model.User" parameterType="java.util.Map">
+        <![CDATA[
+        SELECT
+	        u.id as "userId",
+	        u.username as "userName",
+	        u.password as "passWord",
+	        r.id as "roleId",
+	        r.role_name as "roleName"
+        from t_user u
+        	inner join t_role r	on r.id=u.role_id
+        where 1=1
+        ]]>
+        <if test="userName != null">
+        and u.username like concat('%',#{userName,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="userId != null">
+        and u.id like concat('%',#{userId,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="roleId != null">
+        and r.id = #{roleId,jdbcType=INTEGER}
+        </if>
+	</select>
+	
+	<select id="queryRoleAsList" resultType="Role">
+		SELECT 
+			id as "id",
+			role_name as "roleName"
+		FROM t_role
+		WHERE 1=1
+	</select>
+</mapper>

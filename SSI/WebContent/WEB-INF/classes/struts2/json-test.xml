@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+	<package name="default" namespace="/" extends="json-default"> 
+        <action name="jsontest" class="JsonAction"> 
+            <!-- 返回单个值的result --> 
+            <result name="message" type="json"></result> 
+
+            <!-- 返回UserInfo对象的--> 
+            <result name="userInfo" type="json"></result> 
+
+            <!-- 返回List对象的--> 
+            <result name="list" type="json"></result> 
+
+            <!-- 返回Map对象的--> 
+            <result name="map" type="json"></result> 
+        </action> 
+
+		<action name="jsonGetStudentCourseDetail" method="jsonGetStudentCourseDetail" class="StudentAction" >
+        	<result name="success" type="json"></result>
+        </action>
+    </package> 
+
+</struts>

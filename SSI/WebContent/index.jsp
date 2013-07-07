@@ -13,35 +13,76 @@
 		
 	}
 </script>
+<style type="text/css">
+* {
+	margin:0;
+	padding:0;
+}
+html {
+	width:100%;
+	height:100%;
+	overflow-x:hidden;
+}
+body {
+	height:100%;
+	margin:0;
+	padding:0;
+	font-size:10pt;
+	background:#CCC;
+	color:#333;
+	overflow:auto;
+	overflow-x:hidden;
+}
+body#index {
+	border-left:200px solid #333333;
+}
+#main {
+	border-left:3px solid #666;
+}
+#globalNav {
+	position:absolute;
+	top:90px;
+	left:0;
+}
+#globalNav li a{
+	display:block;
+	width:180px;
+	padding:10px;
+	background:#666;
+	border-bottom:3px solid #525252;
+	color:#FFF;
+	font-weight:bold;
+	text-decoration:none;
+}
+#globalNav li a:hover{
+	background:#585858;
+	border-right:3px solid #333;
+}
+#globalNav li ul li a{
+	background:#585858;
+}
+#globalNav li ul li a:hover{
+	background:#666;
+}
+#frameBord {
+	border-left:3px solid #666;
+}
+#head{
+	height:100px;
+}
+</style>
 </head>
-<body>
-<center>
-<table border="1" width="80%">
-<tr>
-	<td colspan="2" height="110">
-	当前用户：<s:property value="currUser.userName" /><br>
-	<h2>SSI Home</h2>
-	</td>
-</tr>
-<tr>
-	<td width="250" height="500">
-	菜单：
-	<ul>
+<body id="index">
+	<ul id="globalNav">
 	<li><a href="toStudentManagement">学生成绩查询</a></li>
 	<li><a href="searchUser">用户管理</a></li>
 	<li><a href="json_test.jsp">Json示例</a></li>
 	<li><a href="js_html.jsp">JS HTML</a></li>
 	</ul>
-	</td>
-	<td>
-	<iframe id="main" src="toStudentManagement" width="100%" height="100%">
 	
-	</iframe>
-	</td>
-</tr>
-	
-	
-</table>
-</center>
+	<div id="head">
+	当前用户：<s:property value="currUser.userName" /><br>
+	</div>
+	<iframe id="main" src="toStudentManagement" width="100%" height="100%" frameborder="0"></iframe>
 </body>
 </html>

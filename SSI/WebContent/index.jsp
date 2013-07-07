@@ -75,10 +75,10 @@ body#index {
 </head>
 <body id="index">
 	<ul id="globalNav">
-	<li><a href="toStudentManagement">学生成绩查询</a></li>
-	<li><a href="searchUser">用户管理</a></li>
-	<li><a href="json_test.jsp">Json示例</a></li>
-	<li><a href="js_html.jsp">JS HTML</a></li>
+	<li><a target="main" href="toStudentManagement">学生成绩查询</a></li>
+	<li><a target="main" href="searchUser">用户管理</a></li>
+	<li><a target="main" href="json_test.jsp">Json示例</a></li>
+	<li><a target="main" href="js_html.jsp">JS HTML</a></li>
 	</ul>
 	
 	<div id="head">

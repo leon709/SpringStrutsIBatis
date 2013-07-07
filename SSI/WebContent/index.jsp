@@ -36,12 +36,10 @@ body {
 body#index {
 	border-left:200px solid #333333;
 }
-#main {
-	border-left:3px solid #666;
-}
+
 #globalNav {
 	position:absolute;
-	top:90px;
+	top:100px;
 	left:0;
 }
 #globalNav li a{
@@ -64,11 +62,14 @@ body#index {
 #globalNav li ul li a:hover{
 	background:#666;
 }
-#frameBord {
-	border-left:3px solid #666;
-}
 #head{
-	height:100px;
+	height:15%;
+	border-left:5px solid #666;
+	border-bottom:5px solid #666;
+}
+#main {
+	border-left:5px solid #666;
+	height:84%;
 }
 </style>
 </head>
@@ -83,6 +84,6 @@ body#index {
 	<div id="head">
 	当前用户：<s:property value="currUser.userName" /><br>
 	</div>
-	<iframe id="main" src="toStudentManagement" width="100%" height="100%" frameborder="0"></iframe>
+	<iframe id="main" src="toStudentManagement" width="99%" frameborder="0"></iframe>
 </body>
 </html>
